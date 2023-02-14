@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "bkklite": {
+      "hosting": {
+        "Bkklite": [
+          "bkklite"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "bkklite"
+  }
+}

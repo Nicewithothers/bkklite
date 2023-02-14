@@ -6,6 +6,10 @@ import { FlexModule } from "@angular/flex-layout";
 import {MainModule} from "./pages/main/main.module";
 import {CommonModule} from "@angular/common";
 import {BrowserModule} from "@angular/platform-browser";
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { provideStorage,getStorage } from '@angular/fire/storage';
+import {AngularFireModule} from '@angular/fire/compat'
 
 @NgModule({
   declarations: [
@@ -17,7 +21,11 @@ import {BrowserModule} from "@angular/platform-browser";
     AppRoutingModule,
     BrowserAnimationsModule,
     FlexModule,
-    MainModule
+    MainModule,
+    AngularFireModule,
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage())
   ],
   providers: [],
   bootstrap: [AppComponent],
