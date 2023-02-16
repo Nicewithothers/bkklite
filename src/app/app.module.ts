@@ -3,13 +3,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexModule } from "@angular/flex-layout";
-import {MainModule} from "./pages/main/main.module";
+import {MainModule} from "./pages/shared/main/main.module";
 import {CommonModule} from "@angular/common";
 import {BrowserModule} from "@angular/platform-browser";
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import {AngularFireModule} from '@angular/fire/compat'
+import {MatToolbarModule} from "@angular/material/toolbar";
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import {AngularFireModule} from '@angular/fire/compat'
     CommonModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    MatToolbarModule,
     FlexModule,
     MainModule,
     AngularFireModule,

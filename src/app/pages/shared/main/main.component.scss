@@ -1,0 +1,23 @@
+mat-toolbar {
+  position: relative;
+  min-height: 12%;
+  z-index: 20;
+}
+
+img {
+  width: 200px;
+  height: 60px;
+}
+
+span {
+  display: inline-block;
+}
+
+mat-list-item {
+  width: auto;
+}
+
+.toolbarbuttons {
+  font-family: "Jane Capsbold", serif;
+  font-size: x-large;
+}

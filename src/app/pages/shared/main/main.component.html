@@ -1,0 +1,24 @@
+<meta charset="UTF-8">
+<mat-toolbar fxLayout="row" fxLayoutAlign="space-around center" style="color: #ffffff">
+  <div>
+    <span fxFlex>
+      <img src="../../../../assets/images/bkklite_logo.png" alt="bkk_logo" class="bkklogo" fxShow.gt-lg loading="lazy" routerLink="/main" style="width: 90%">
+    </span>
+    <mat-list role="list" fxLayout="row" fxLayoutGap="75px" fxHide.lt-lg>
+      <mat-list-item><button mat-button class="toolbarbuttons" routerLink="/menetrend">Menetrend</button></mat-list-item>
+      <mat-list-item><button mat-button class="toolbarbuttons" routerLink="/terkepek">Térképek</button></mat-list-item>
+      <mat-list-item><button mat-button class="toolbarbuttons" routerLink="/hirek">Hírek</button></mat-list-item>
+      <mat-list-item><button mat-button class="toolbarbuttons" routerLink="/egyeb">Egyéb érdekességek</button></mat-list-item>
+      <mat-list-item><button mat-button class="toolbarbuttons" routerLink="/bkkinfopult">BKK Infopult</button></mat-list-item>
+    </mat-list>
+  </div>
+  <div fxHide.gt-md>
+    <img src="../../../../assets/images/bkklite_logo.png" alt="bkk_logo" class="bkklogo" fxHide.lt-lg loading="lazy" routerLink="/main">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon style="color:#000000">menu</mat-icon>
+    </button>
+  </div>
+  <mat-menu #menu="matMenu">
+
+  </mat-menu>
+</mat-toolbar>

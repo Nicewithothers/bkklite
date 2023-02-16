@@ -5,12 +5,20 @@ import {MainRoutingModule} from "./main-routing.module";
 import {MatCardModule} from "@angular/material/card";
 import {MatListModule} from "@angular/material/list";
 import {MatIconModule} from "@angular/material/icon";
-import {FlexModule} from "@angular/flex-layout";
+import {FlexLayoutModule, FlexModule} from "@angular/flex-layout";
+import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import {MatMenuModule} from "@angular/material/menu";
+import {MatButtonModule} from "@angular/material/button";
+import {MatInputModule} from "@angular/material/input";
 
 
 
 @NgModule({
   declarations: [
+    MainComponent
+  ],
+  exports: [
     MainComponent
   ],
   imports: [
@@ -19,7 +27,13 @@ import {FlexModule} from "@angular/flex-layout";
     MatCardModule,
     MatListModule,
     MatIconModule,
-    FlexModule
+    FlexModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatMenuModule,
+    MatButtonModule,
+    FlexLayoutModule,
+    MatInputModule
   ]
 })
 export class MainModule { }
