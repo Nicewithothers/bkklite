@@ -1,15 +1,14 @@
 <meta charset="UTF-8">
-<mat-toolbar fxLayout="row" fxLayoutAlign="space-around center" style="color: #ffffff">
+<mat-toolbar fxLayout="row" fxLayoutAlign="space-between center" style="color: #ffffff">
   <div>
     <span fxFlex>
       <img src="../../../../assets/images/bkklite_logo.png" alt="bkk_logo" class="bkklogo" fxShow.gt-lg loading="lazy" routerLink="/main" style="width: 90%">
     </span>
-    <mat-list role="list" fxLayout="row" fxLayoutGap="75px" fxHide.lt-lg>
+    <mat-list role="list" fxLayout="row" fxLayoutGap="180px" fxHide.lt-lg>
       <mat-list-item><button mat-button class="toolbarbuttons" routerLink="/menetrend">Menetrend</button></mat-list-item>
       <mat-list-item><button mat-button class="toolbarbuttons" routerLink="/terkepek">Térképek</button></mat-list-item>
       <mat-list-item><button mat-button class="toolbarbuttons" routerLink="/hirek">Hírek</button></mat-list-item>
-      <mat-list-item><button mat-button class="toolbarbuttons" routerLink="/egyeb">Egyéb érdekességek</button></mat-list-item>
-      <mat-list-item><button mat-button class="toolbarbuttons" routerLink="/bkkinfopult">BKK Infopult</button></mat-list-item>
+      <mat-list-item><button mat-button class="toolbarbuttons" routerLink="/egyeb">Érdekességek</button></mat-list-item>
     </mat-list>
   </div>
   <div fxHide.gt-md>
@@ -22,3 +21,41 @@
 
   </mat-menu>
 </mat-toolbar>
+
+<mat-sidenav-container [hasBackdrop]="false" autosize>
+  <mat-sidenav mode="side" #nav (keydown.escape)="nav.close()">
+    <mat-list role="list">
+      <mat-list-item role="listitem" routerLink="/login" style="color: red">
+        <mat-icon>login</mat-icon>
+        <span>Belépés</span>
+      </mat-list-item>
+      <mat-list-item role="listitem" routerLink="/register">
+        <mat-icon>app_registration</mat-icon>
+        <span>Regisztráció</span>
+      </mat-list-item>
+      <mat-list-item role="listitem" routerLink="/menetrend">
+        <mat-icon>menu</mat-icon>
+        <span>Menetrend</span>
+      </mat-list-item>
+      <mat-list-item role="listitem" routerLink="/terkepek">
+        <mat-icon>map</mat-icon>
+        <span>Térképek</span>
+      </mat-list-item>
+      <mat-list-item role="listitem" routerLink="/hirek">
+        <mat-icon>bookmark</mat-icon>
+        <span>Hírek</span>
+      </mat-list-item>
+      <mat-list-item role="listitem" routerLink="/erdekessegek">
+        <mat-icon>grade</mat-icon>
+        <span>Érdekességek</span>
+      </mat-list-item>
+    </mat-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <button mat-icon-button (click)="nav.toggle()">
+      <mat-icon style="color: black" *ngIf="!nav.opened">arrow_forward_ios</mat-icon>
+      <mat-icon style="color: black" *ngIf="nav.opened">arrow_back_ios</mat-icon>
+    </button>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
