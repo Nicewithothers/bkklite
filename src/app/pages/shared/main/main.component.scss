@@ -2,16 +2,44 @@ mat-toolbar {
   min-height: 12%;
 }
 
-img {
-  width: 200px;
-  height: 60px;
+#logo {
+  position: fixed;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
 }
 
-mat-list-item {
+img {
+  width: 130px;
+  cursor: pointer;
+}
+
+mat-list mat-list-item {
   width: auto;
+  text-align: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+mat-list mat-icon {
+  vertical-align: bottom;
+  padding-right: 5px
+}
+
+mat-sidenav mat-list mat-list-item:hover {
+  background-color: lightgrey;
+  border-radius: 2%;
 }
 
 .toolbarbuttons {
   font-family: "Jane Capsbold", serif;
   font-size: x-large;
+}
+
+.mat-sidenav-container {
+  position: fixed;
+  height: 100%;
+  min-height: 100%;
+  width: 100%;
+  min-width: 100%;
 }

@@ -17,12 +17,13 @@ import {MatMenuModule} from "@angular/material/menu";
 import {MatIconModule} from "@angular/material/icon";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {environment} from "../environments/environment";
+import {initializeApp, provideFirebaseApp} from "@angular/fire/app";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainComponent
+    MainComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,7 +32,7 @@ import {environment} from "../environments/environment";
     BrowserAnimationsModule,
     MatToolbarModule,
     FlexModule,
-    AngularFireModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage()),

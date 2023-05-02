@@ -1,22 +1,16 @@
 <meta charset="UTF-8">
-<mat-toolbar fxLayout="row" fxLayoutAlign="space-between center" style="color: #ffffff">
-  <div>
-    <span fxFlex>
-      <img src="../../../../assets/images/bkklite_logo.png" alt="bkk_logo" class="bkklogo" fxShow.gt-lg loading="lazy" routerLink="/main" style="width: 90%">
-    </span>
-    <mat-list role="list" fxLayout="row" fxLayoutGap="180px" fxHide.lt-lg>
-      <mat-list-item><button mat-button class="toolbarbuttons" routerLink="/menetrend">Menetrend</button></mat-list-item>
-      <mat-list-item><button mat-button class="toolbarbuttons" routerLink="/terkepek">Térképek</button></mat-list-item>
-      <mat-list-item><button mat-button class="toolbarbuttons" routerLink="/hirek">Hírek</button></mat-list-item>
-      <mat-list-item><button mat-button class="toolbarbuttons" routerLink="/egyeb">Érdekességek</button></mat-list-item>
-    </mat-list>
-  </div>
-  <div fxHide.gt-md>
-    <img src="../../../../assets/images/bkklite_logo.png" alt="bkk_logo" class="bkklogo" fxHide.lt-lg loading="lazy" routerLink="/main">
-    <button mat-icon-button [matMenuTriggerFor]="menu">
-      <mat-icon style="color:#000000">menu</mat-icon>
-    </button>
-  </div>
+<mat-toolbar
+  style="color: #ffffff; width: 100%; display: flex; flex-direction: row; justify-content: space-around; align-items: center; align-content: space-around; vertical-align: top">
+  <button mat-icon-button (click)="nav.toggle()">
+    <mat-icon style="color: black" *ngIf="!nav.opened">arrow_forward_ios</mat-icon>
+    <mat-icon style="color: black" *ngIf="nav.opened">arrow_back_ios</mat-icon>
+  </button>
+  <img id="logo" src="../../../../assets/images/bkklite_logo.png" alt="bkk_logo" class="bkklogo" fxShow.gt-lg
+       loading="lazy"
+       routerLink="/main">
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon style="color: black">menu</mat-icon>
+  </button>
   <mat-menu #menu="matMenu">
 
   </mat-menu>
@@ -24,38 +18,46 @@
 
 <mat-sidenav-container [hasBackdrop]="false" autosize>
   <mat-sidenav mode="side" #nav (keydown.escape)="nav.close()">
-    <mat-list role="list">
-      <mat-list-item role="listitem" routerLink="/login" style="color: red">
+    <mat-list role="list"
+              style="padding: 0; height: 80%; display: inline-flex; flex-direction: column; justify-content: space-evenly; align-items: center; align-content: space-evenly">
+      <mat-list-item *ngIf="!loggedInUser" role="listitem" routerLink="/login"
+                     [ngStyle]="{'border-bottom': this.router.url === '/login' ? 'solid 5px #1411d8' : 'none', 'border-radius': '2%'}">
         <mat-icon>login</mat-icon>
         <span>Belépés</span>
       </mat-list-item>
-      <mat-list-item role="listitem" routerLink="/register">
+      <mat-list-item *ngIf="loggedInUser" role="listitem" routerLink="/login" (click)="logout()"
+                     [ngStyle]="{'border-bottom': this.router.url === '/login' ? 'solid 5px #1411d8' : 'none', 'border-radius': '2%'}">
+        <mat-icon>logout</mat-icon>
+        <span>Kilépés</span>
+      </mat-list-item>
+      <mat-list-item *ngIf="!loggedInUser" role="listitem" routerLink="/register"
+                     [ngStyle]="{'border-bottom': this.router.url === '/register' ? 'solid 5px #1411d8' : 'none', 'border-radius': '2%'}">
         <mat-icon>app_registration</mat-icon>
         <span>Regisztráció</span>
       </mat-list-item>
-      <mat-list-item role="listitem" routerLink="/menetrend">
+      <mat-list-item *ngIf="loggedInUser" role="listitem" routerLink="/menetrend"
+                     [ngStyle]="{'border-bottom': this.router.url === '/menetrend' ? 'solid 5px #1411d8' : 'none', 'border-radius': '2%'}">
         <mat-icon>menu</mat-icon>
         <span>Menetrend</span>
       </mat-list-item>
-      <mat-list-item role="listitem" routerLink="/terkepek">
+      <mat-list-item *ngIf="loggedInUser" role="listitem" routerLink="/maps"
+                     [ngStyle]="{'border-bottom': this.router.url === '/maps' ? 'solid 5px #1411d8' : 'none', 'border-radius': '2%'}">
         <mat-icon>map</mat-icon>
         <span>Térképek</span>
       </mat-list-item>
-      <mat-list-item role="listitem" routerLink="/hirek">
+      <mat-list-item *ngIf="loggedInUser" role="listitem" routerLink="/news"
+                     [ngStyle]="{'border-bottom': this.router.url === '/news' ? 'solid 5px #1411d8' : 'none', 'border-radius': '2%'}">
         <mat-icon>bookmark</mat-icon>
         <span>Hírek</span>
       </mat-list-item>
-      <mat-list-item role="listitem" routerLink="/erdekessegek">
+      <mat-list-item *ngIf="loggedInUser" role="listitem" routerLink="/erdekessegek"
+                     [ngStyle]="{'border-bottom': this.router.url === '/login' ? 'solid 5px #1411d8' : 'none', 'border-radius': '2%'}">
         <mat-icon>grade</mat-icon>
         <span>Érdekességek</span>
       </mat-list-item>
     </mat-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <button mat-icon-button (click)="nav.toggle()">
-      <mat-icon style="color: black" *ngIf="!nav.opened">arrow_forward_ios</mat-icon>
-      <mat-icon style="color: black" *ngIf="nav.opened">arrow_back_ios</mat-icon>
-    </button>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
