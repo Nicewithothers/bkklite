@@ -1,8 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import firebase from "firebase/compat/app";
 import {Router} from "@angular/router";
 import {AuthService} from "../services/auth.service";
 import {UserService} from "../services/user.service";
+import {MatSidenav} from "@angular/material/sidenav";
 
 @Component({
   selector: 'app-main',

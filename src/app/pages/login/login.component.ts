@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
   login() {
     this.as.login(this.LoginForm.get('email')?.value as string, this.LoginForm.get('password')?.value as string).then(sess => {
       console.log(sess);
-      this.router.navigateByUrl("/menetrend");
+      this.router.navigateByUrl("/news");
     }).catch(e => {
       console.error(e);
     });
