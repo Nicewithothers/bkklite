@@ -18,8 +18,12 @@ const routes: Routes = [
   { path: 'newpass',
     loadChildren: () => import('./pages/newpass/newpass.module').then(m => m.NewpassModule),
   },
-  { path: 'news',
-    loadChildren: () => import('./pages/news/news.module').then(m => m.NewsModule),
+  { path: 'maps',
+    loadChildren: () => import('./pages/maps/maps.module').then(m => m.MapsModule),
+    canActivate: [AuthGuard]
+  },
+  { path: 'addline',
+    loadChildren: () => import('./pages/addline/addline.module').then(m => m.AddlineModule),
     canActivate: [AuthGuard]
   },
   {
@@ -31,7 +35,6 @@ const routes: Routes = [
     path: 'not-found',
     loadChildren: () => import('./pages/not-found/not-found.module').then(m => m.NotFoundModule),
   },
-  { path: 'maps', loadChildren: () => import('./pages/maps/maps.module').then(m => m.MapsModule) },
   {
     path: '**',
     redirectTo: '/not-found'

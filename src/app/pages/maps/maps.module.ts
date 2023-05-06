@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import { MapsRoutingModule } from './maps-routing.module';
 import { MapsComponent } from './maps.component';
+import {MatInputModule} from "@angular/material/input";
+import {MatSelectModule} from "@angular/material/select";
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -11,7 +14,10 @@ import { MapsComponent } from './maps.component';
   ],
   imports: [
     CommonModule,
-    MapsRoutingModule
+    MapsRoutingModule,
+    MatInputModule,
+    MatSelectModule,
+    FormsModule
   ]
 })
 export class MapsModule { }

@@ -1,9 +1,10 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import firebase from "firebase/compat/app";
 import {Router} from "@angular/router";
 import {AuthService} from "../services/auth.service";
 import {UserService} from "../services/user.service";
-import {MatSidenav} from "@angular/material/sidenav";
+import {User} from "../../../model/user";
+import {first} from "rxjs";
 
 @Component({
   selector: 'app-main',
@@ -33,5 +34,21 @@ export class MainComponent implements OnInit{
     }).catch(e => {
       console.error(e);
     });
+  }
+
+  deleteUser() {
+    this.as.currentUser().then(user => {
+      user?.delete().then(() => {
+        this.us.deleteUser(this.loggedInUser?.uid as string).then(() => {
+          this.router.navigateByUrl("/login");
+        }).catch(e => {
+          console.error(e);
+        })
+      }).catch(e => {
+        console.error(e);
+      })
+    }).catch(e => {
+      console.error(e);
+    })
   }
 }

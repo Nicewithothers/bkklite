@@ -22,30 +22,28 @@ export class RegisterComponent {
   }
 
   createAccount() {
-    if (this.regForm.valid) {
-      if (this.regForm.get('password')?.value === this.regForm.get('passwordAgain')?.value){
-        this.as.signup(this.regForm.get('email')?.value as string, this.regForm.get('password')?.value as string).then(sess => {
-          const user: User = {
-            id: sess.user?.uid as string,
-            email: this.regForm.get('email')?.value as string,
-            nev: this.regForm.get('name')?.value as string,
-            regdatum: Date.now(),
-            role: "user"
-          }
-          this.us.createAndUpdateUser(user).then(() => {
-            console.log("User created successfully!");
-            this.router.navigateByUrl("/news");
-          }).catch(e => {
-            console.error(e);
-          })
+    if (this.regForm.get('password')?.value === this.regForm.get('passwordAgain')?.value) {
+      this.as.signup(this.regForm.get('email')?.value as string, this.regForm.get('password')?.value as string).then(sess => {
+        const user: User = {
+          id: sess.user?.uid as string,
+          email: this.regForm.get('email')?.value as string,
+          nev: this.regForm.get('name')?.value as string,
+          regdatum: Date.now(),
+          role: "user"
+        }
+        this.us.createAndUpdateUser(user).then(() => {
+          console.log("User created successfully!");
+          this.router.navigateByUrl("/menetrend");
         }).catch(e => {
           console.error(e);
-        });
-      } else {
-        this.regForm.controls['passwordAgain'].setErrors({
-          'incorrect': true
         })
-      }
+      }).catch(e => {
+        console.error(e);
+      });
+    } else {
+      this.regForm.controls['passwordAgain'].setErrors({
+        'incorrect': true
+      })
     }
   }
 

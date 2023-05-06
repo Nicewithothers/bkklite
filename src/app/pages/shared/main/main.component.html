@@ -36,16 +36,15 @@
         <mat-icon>map</mat-icon>
         <span>Térképek</span>
       </mat-list-item>
-      <mat-list-item *ngIf="loggedInUser" role="listitem" routerLink="/news"
-                     [ngStyle]="{'border-left': this.router.url === '/news' ? 'solid 5px #1411d8' : 'none', 'border-radius': '2%'}">
-        <mat-icon>bookmark</mat-icon>
-        <span>Hírek</span>
+      <mat-list-item *ngIf="loggedInUser" role="listitem" (click)="deleteUser()">
+        <mat-icon style="color: red">clear</mat-icon>
+        <span>Fiók törlése</span>
       </mat-list-item>
     </mat-list>
   </mat-menu>
   <img src="../../../../assets/images/bkklite_logo.png" alt="bkk_logo"
        loading="lazy"
-       routerLink="/news">
+       routerLink="/menetrend">
 </mat-toolbar>
 
 <mat-sidenav-container autosize>
@@ -72,15 +71,19 @@
         <mat-icon>menu</mat-icon>
         <span>Menetrend</span>
       </mat-list-item>
+      <mat-list-item *ngIf="loggedInUser" role="listitem" routerLink="/addline"
+                     [ngStyle]="{'border-bottom': this.router.url === '/addline' ? 'solid 5px #1411d8' : 'none', 'border-radius': '2%'}">
+        <mat-icon>add</mat-icon>
+        <span>Új vonal</span>
+      </mat-list-item>
       <mat-list-item *ngIf="loggedInUser" role="listitem" routerLink="/maps"
                      [ngStyle]="{'border-bottom': this.router.url === '/maps' ? 'solid 5px #1411d8' : 'none', 'border-radius': '2%'}">
         <mat-icon>map</mat-icon>
         <span>Térképek</span>
       </mat-list-item>
-      <mat-list-item *ngIf="loggedInUser" role="listitem" routerLink="/news"
-                     [ngStyle]="{'border-bottom': this.router.url === '/news' ? 'solid 5px #1411d8' : 'none', 'border-radius': '2%'}">
-        <mat-icon>bookmark</mat-icon>
-        <span>Hírek</span>
+      <mat-list-item id="deleteuser" *ngIf="loggedInUser" role="listitem" (click)="deleteUser()">
+        <mat-icon style="color: black">clear</mat-icon>
+        <span>Fiók törlése</span>
       </mat-list-item>
     </mat-list>
   </mat-sidenav>

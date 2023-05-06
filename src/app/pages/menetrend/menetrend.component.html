@@ -1,1 +1,42 @@
-<p>menetrend works!</p>
+<meta charset="UTF-8">
+<div fxLayout="column" fxLayoutAlign="start center" style="height: 100%">
+  <mat-card style="width: 50%; margin-top: 20px; margin-left: auto; margin-right: auto" fxLayout="column">
+    <mat-card-header
+      style="width: 90%; margin-left: auto;margin-right: auto; align-items: center; justify-content: center">
+      <mat-card-title>Útvonalak</mat-card-title>
+    </mat-card-header>
+    <mat-card-content style="width: 90%; margin-left: auto; margin-right: auto" fxLayout="column" fxLayoutAlign="center center">
+      <mat-list *ngFor="let line of this.lines">
+          <mat-list-item>
+            <ng-container class="ng-icons" [ngSwitch]="line.type">
+              <ng-container *ngSwitchCase="'Tram'">
+                <mat-icon style="color: yellow">tram</mat-icon>
+              </ng-container>
+              <ng-container class="ng-icons" *ngSwitchCase="'Bus'">
+                <mat-icon style="color: blue">directions_bus</mat-icon>
+              </ng-container>
+              <ng-container class="ng-icons" *ngSwitchCase="'Trolley'">
+                <mat-icon style="color: red">directions_bus_filled</mat-icon>
+              </ng-container>
+              <ng-container class="ng-icons" *ngSwitchCase="'Metro'">
+                <mat-icon style="color: black">directions_railway</mat-icon>
+              </ng-container>
+              <ng-container class="ng-icons" *ngSwitchCase="'SRL'">
+                <mat-icon style="color: lightgray">directions_subway_filled</mat-icon>
+              </ng-container>
+            </ng-container>
+            {{line.lineNumber}}
+            &ensp;
+            &ensp;
+            -
+            {{line.lineStart}}
+            <=>
+            {{line.lineEnd}}
+            --> A vonal ennyi ideje él:
+            {{line.uploadDate | uploaddate}}
+          </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</div>
+

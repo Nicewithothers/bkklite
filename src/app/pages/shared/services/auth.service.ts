@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {AngularFireAuth} from "@angular/fire/compat/auth";
+import firebase from "firebase/compat/app";
 
 @Injectable({
   providedIn: 'root'
@@ -10,15 +11,15 @@ export class AuthService {
   }
 
   login(email: string, password: string) {
-    return this.afa.signInWithEmailAndPassword(email, password);
+    return firebase.auth().signInWithEmailAndPassword(email,password);
   }
 
   newPassword(email: string) {
-    return this.afa.sendPasswordResetEmail(email);
+    return firebase.auth().sendPasswordResetEmail(email);
   }
 
   signup(email: string, password: string) {
-    return this.afa.createUserWithEmailAndPassword(email, password);
+    return firebase.auth().createUserWithEmailAndPassword(email, password);
   }
 
   userLoggedIn() {
@@ -26,10 +27,10 @@ export class AuthService {
   }
 
   currentUser() {
-    return this.afa.currentUser;
+    return this.afa.currentUser.then();
   }
 
   logout() {
-    return this.afa.signOut();
+    return firebase.auth().signOut();
   }
 }

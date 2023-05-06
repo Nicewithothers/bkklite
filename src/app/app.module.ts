@@ -21,30 +21,31 @@ import {initializeApp, provideFirebaseApp} from "@angular/fire/app";
 
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MainComponent
-  ],
-  imports: [
-    BrowserModule,
-    CommonModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    FlexModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
-    provideAuth(() => getAuth()),
-    provideFirestore(() => getFirestore()),
-    provideStorage(() => getStorage()),
-    MatListModule,
-    MatButtonModule,
-    ExtendedModule,
-    MatMenuModule,
-    MatIconModule,
-    MatSidenavModule,
-  ],
-  providers: [{provide: FIREBASE_OPTIONS, useValue: environment.firebase}],
-  bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+    declarations: [
+        AppComponent,
+        MainComponent
+    ],
+    imports: [
+        BrowserModule,
+        CommonModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        FlexModule,
+        provideFirebaseApp(() => initializeApp(environment.firebase)),
+        provideAuth(() => getAuth()),
+        provideFirestore(() => getFirestore()),
+        provideStorage(() => getStorage()),
+        MatListModule,
+        MatButtonModule,
+        ExtendedModule,
+        MatMenuModule,
+        MatIconModule,
+        MatSidenavModule,
+    ],
+    providers: [{provide: FIREBASE_OPTIONS, useValue: environment.firebase}],
+    bootstrap: [AppComponent],
+    exports: [],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

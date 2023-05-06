@@ -1,1 +1,11 @@
-<p>maps works!</p>
+<div id="imageList">
+  <mat-form-field appearance="fill">
+    <mat-label>Térképek</mat-label>
+    <mat-select>
+      <mat-option [(ngModel)]="selected" *ngFor="let map of maps" [value]="map">{{map}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div>
+  <img alt="image_src" [src]="mapLoaded">
+</div>

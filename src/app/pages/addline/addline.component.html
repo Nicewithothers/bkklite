@@ -1,0 +1,38 @@
+<meta charset="UTF-8">
+<div fxLayout="column" fxLayoutAlign="center center" style="height: 100%">
+  <mat-card style="width: 30%; margin-left: auto; margin-right: auto">
+    <mat-card-header style="width: 90%; margin-left: auto;margin-right: auto; align-items: center; justify-content: center">
+      <mat-card-title>Útvonal feltöltése</mat-card-title>
+    </mat-card-header>
+    <mat-divider/>
+    <br>
+    <mat-card-content style="width: 90%; margin-left: auto; margin-right: auto">
+      <form [formGroup]="lineForm" id="lineform" (ngSubmit)="onSubmit()" fxLayout="column" fxLayoutAlign="start start">
+        <mat-form-field appearance="outline" style="width: 25%">
+          <mat-label>Tipus</mat-label>
+          <mat-select formControlName="type" required>
+            <mat-option *ngFor="let type of types" [value]="type" >{{type}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Járatszám</mat-label>
+          <input matInput type="number" formControlName="linenumber" min="1" max="300" required>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Járat kezdőállomása</mat-label>
+          <input matInput type="text" formControlName="linestart" required>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Járat végállomása</mat-label>
+          <input matInput type="text" formControlName="lineend" placeholder="Járat végállomása" required>
+        </mat-form-field>
+        <div style="width: 100%" fxLayout fxLayoutAlign="space-between center">
+          <button mat-raised-button type="submit" color="primary">Hozzáadás</button>
+          <button mat-raised-button type="reset" color="warn">Mégse</button>
+          <button mat-raised-button type="button" color="primary" (click)="back()">Vissza a főoldalra</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
+
