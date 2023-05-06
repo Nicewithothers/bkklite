@@ -40,20 +40,22 @@ export class AddlineComponent implements OnInit{
   }
 
   onSubmit() {
-    const l = {
-      id: uuid(),
-      uploadDate: Date.now(),
-      type: this.lineForm.get('type')?.value as string,
-      lineNumber: this.lineForm.get('linenumber')?.value as number,
-      lineStart: this.lineForm.get('linestart')?.value as string,
-      lineEnd: this.lineForm.get('lineend')?.value as string
+    if (this.lineForm.valid) {
+      const l = {
+        id: uuid(),
+        uploadDate: Date.now(),
+        type: this.lineForm.get('type')?.value as string,
+        lineNumber: this.lineForm.get('linenumber')?.value as number,
+        lineStart: this.lineForm.get('linestart')?.value as string,
+        lineEnd: this.lineForm.get('lineend')?.value as string
+      }
+      this.ls.createOrUpdateLine(l).then(sess => {
+        this.lineForm.reset();
+        this.sb.open("Járat sikeresen hozzáadva!",``,{duration: 3500});
+      }).catch(e => {
+        console.error(e);
+      })
     }
-    this.ls.createOrUpdateLine(l).then(sess => {
-      this.lineForm.reset();
-      this.sb.open("Járat sikeresen hozzáadva!",``,{duration: 3500});
-    }).catch(e => {
-      console.error(e);
-    })
   }
 
   back() {

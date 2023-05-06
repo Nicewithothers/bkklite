@@ -1,11 +1,16 @@
-<div id="imageList">
+<div id="imageList" fxLayout="column" fxLayoutAlign="center center">
   <mat-form-field appearance="fill">
     <mat-label>Térképek</mat-label>
-    <mat-select>
-      <mat-option [(ngModel)]="selected" *ngFor="let map of maps" [value]="map">{{map}}</mat-option>
+    <mat-select [formControl]="mapControl">
+      <mat-option *ngFor="let map of maps" [value]="map">
+        {{map.mapValue}}
+      </mat-option>
     </mat-select>
   </mat-form-field>
-</div>
-<div>
-  <img alt="image_src" [src]="mapLoaded">
+  <mat-chip-listbox *ngFor="let map of maps">
+    <mat-chip class="chips" *ngIf="mapControl.value?.mapValue === map.mapValue" (click)="addNewTab(map.mapLink)" style="text-align: center">
+      <img alt="bkk_logo_mini" src="../../../assets/images/favicon.ico">
+      {{map.mapValue}}
+    </mat-chip>
+  </mat-chip-listbox>
 </div>

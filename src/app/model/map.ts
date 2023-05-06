@@ -1,4 +1,4 @@
 export interface Map {
-  id: string;
-  mapUrl: string;
+  mapValue: string;
+  mapLink: string;
 }

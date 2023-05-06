@@ -1,6 +1,6 @@
-import {Component, Input, OnChanges, OnInit} from '@angular/core';
-import {MapService} from "../shared/services/map.service";
+import {Component} from '@angular/core';
 import {Map} from "../../model/map";
+import {FormControl, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-maps',
@@ -8,23 +8,16 @@ import {Map} from "../../model/map";
   styleUrls: ['./maps.component.scss']
 })
 
-export class MapsComponent implements OnInit, OnChanges{
+export class MapsComponent{
+  mapControl = new FormControl<Map | null>(null, Validators.required);
 
-  mapObjects: Map[] = [];
-  mapLoaded?: Map;
-  maps: string[] = ['Nappal','Éjszaka','Belváros'];
-  selected: string = "";
+  maps: Map[] = [
+    {mapValue: 'Nappali', mapLink:'https://bkk.hu/downloads/map/171/'},
+    {mapValue: 'Éjszakai', mapLink: 'https://bkk.hu/downloads/map/175/'},
+    {mapValue: 'Belvárosi', mapLink: 'https://bkk.hu/downloads/map/172/'}
+  ];
 
-  constructor(private ms: MapService) {
-  }
-  ngOnInit(): void {
-    this.ms.loadImageWithUrl().subscribe(sess => {
-      this.mapObjects = sess;
-    })
-  }
-
-  ngOnChanges() {
-    if (this.maps.includes(this.selected)) {
-    }
+  addNewTab(url: string) {
+    window.open(url, "_blank");
   }
 }
